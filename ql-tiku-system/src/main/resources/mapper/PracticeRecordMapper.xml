@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qltiku2.mapper.PracticeRecordMapper">
+    
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.qltiku2.entity.PracticeRecord">
+        <id column="id" property="id" />
+        <result column="user_id" property="userId" />
+        <result column="subject_id" property="subjectId" />
+        <result column="subject_name" property="subjectName" />
+        <result column="question_type" property="questionType" />
+        <result column="difficulty" property="difficulty" />
+        <result column="total_questions" property="totalQuestions" />
+        <result column="correct_count" property="correctCount" />
+        <result column="wrong_count" property="wrongCount" />
+        <result column="unanswered_count" property="unansweredCount" />
+        <result column="accuracy_rate" property="accuracyRate" />
+        <result column="duration" property="duration" />
+        <result column="start_time" property="startTime" />
+        <result column="end_time" property="endTime" />
+        <result column="status" property="status" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="is_deleted" property="isDeleted" />
+    </resultMap>
+    
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, user_id, subject_id, subject_name, question_type, difficulty, 
+        total_questions, correct_count, wrong_count, unanswered_count, accuracy_rate, duration, 
+        start_time, end_time, status, create_time, update_time, is_deleted
+    </sql>
+    
+    <!-- 分页查询用户练习记录 -->
+    <select id="selectPracticeRecordPage" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM practice_records
+        WHERE user_id = #{userId} AND is_deleted = 0
+        <if test="subjectId != null">
+            AND subject_id = #{subjectId}
+        </if>
+        <if test="questionType != null">
+            AND question_type = #{questionType}
+        </if>
+        <if test="difficulty != null">
+            AND difficulty = #{difficulty}
+        </if>
+        ORDER BY create_time DESC
+    </select>
+    
+    <!-- 获取用户答题记录 -->
+    <select id="selectAnswerRecordsByUser" resultType="map">
+        SELECT 
+            ar.id,
+            ar.question_id,
+            ar.user_answer,
+            ar.is_correct,
+            ar.answer_time,
+            ar.create_time as answeredAt,
+            q.content as questionContent,
+            q.question_type as questionType,
+            q.difficulty,
+            q.correct_answer as correctAnswer
+        FROM answer_record ar
+        LEFT JOIN question q ON ar.question_id = q.id
+        WHERE ar.user_id = #{userId}
+        <if test="practiceType != null">
+            AND ar.practice_type = #{practiceType}
+        </if>
+        ORDER BY ar.create_time DESC
+    </select>
+    
+    <!-- 根据练习记录ID获取答题记录详情 -->
+    <select id="selectAnswerRecordsByRecordId" resultType="map">
+        SELECT 
+            ar.id,
+            ar.question_id,
+            ar.user_answer,
+            ar.is_correct,
+            ar.answer_time,
+            ar.create_time as answeredAt,
+            q.content as questionContent,
+            q.question_type as questionType,
+            q.difficulty,
+            q.correct_answer as correctAnswer,
+            q.options,
+            q.analysis,
+            ar.answer_time as timeSpent
+        FROM answer_record ar
+        LEFT JOIN question q ON ar.question_id = q.id
+        WHERE ar.user_id = #{userId}
+        AND ar.practice_type = 1
+        <if test="startTime != null and endTime != null">
+            AND ar.create_time BETWEEN #{startTime} AND #{endTime}
+        </if>
+        <if test="startTime != null and endTime == null">
+            AND ar.create_time >= #{startTime}
+        </if>
+        ORDER BY ar.create_time ASC
+    </select>
+    
+</mapper>

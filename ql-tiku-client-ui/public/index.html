@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    
+    <!-- 兼容性检测脚本 - 必须在所有其他脚本之前加载 -->
+    <script src="<%= BASE_URL %>compatibility-check.js"></script>
+    
+    <!-- 基础样式，防止白屏 -->
+    <style>
+      /* 基础样式，确保页面加载时有内容显示 */
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+        background-color: #f5f7fa;
+      }
+      
+      #app {
+        min-height: 100vh;
+      }
+      
+      /* 加载动画 */
+      .initial-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #f5f7fa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition: opacity 0.3s ease;
+      }
+      
+      .initial-loader.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+      
+      .loader-content {
+        text-align: center;
+        padding: 20px;
+      }
+      
+      .loader-spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid #e9ecef;
+        border-top: 4px solid #409eff;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 20px;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      .loader-text {
+        color: #666;
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+      
+      .loader-subtext {
+        color: #999;
+        font-size: 14px;
+      }
+      
+      /* 错误提示样式 */
+      .error-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #f5f7fa;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+      }
+      
+      .error-content {
+        text-align: center;
+        padding: 40px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+      }
+      
+      .error-icon {
+        font-size: 48px;
+        color: #f56c6c;
+        margin-bottom: 16px;
+      }
+      
+      .error-title {
+        color: #333;
+        font-size: 18px;
+        margin-bottom: 12px;
+        font-weight: 500;
+      }
+      
+      .error-message {
+        color: #666;
+        font-size: 14px;
+        line-height: 1.5;
+        margin-bottom: 24px;
+      }
+      
+      .error-button {
+        background: #409eff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        margin: 0 5px;
+      }
+      
+      .error-button:hover {
+        background: #66b1ff;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>
+      <div style="text-align: center; padding: 50px; font-family: Arial, sans-serif;">
+        <h2>JavaScript被禁用</h2>
+        <p>很抱歉，<%= htmlWebpackPlugin.options.title %> 需要启用JavaScript才能正常运行。</p>
+        <p>请在浏览器设置中启用JavaScript，然后刷新页面继续。</p>
+      </div>
+    </noscript>
+    
+    <!-- 初始加载动画 -->
+    <div class="initial-loader" id="initial-loader">
+      <div class="loader-content">
+        <div class="loader-spinner"></div>
+        <div class="loader-text">正在加载应用...</div>
+        <div class="loader-subtext">请稍候</div>
+      </div>
+    </div>
+    
+    <!-- 错误提示容器 -->
+    <div class="error-container" id="error-container">
+      <div class="error-content">
+        <div class="error-icon">⚠️</div>
+        <div class="error-title">应用加载失败</div>
+        <div class="error-message" id="error-message">
+          可能是网络问题或浏览器兼容性问题，请尝试刷新页面。
+        </div>
+        <button class="error-button" onclick="location.reload()">刷新页面</button>
+        <button class="error-button" onclick="window.open('/', '_blank')">新窗口打开</button>
+      </div>
+    </div>
+    
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+    
+    <script>
+      // 在Vue应用加载完成后隐藏加载动画
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          const loader = document.getElementById('initial-loader');
+          if (loader) {
+            loader.classList.add('hidden');
+            setTimeout(function() {
+              loader.remove();
+            }, 300);
+          }
+        }, 500);
+      });
+      
+      // 全局错误处理
+      window.addEventListener('error', function(event) {
+        console.error('全局错误:', event.error);
+        if (event.error && event.error.message) {
+          if (event.error.message.includes('pinia') || 
+              event.error.message.includes('Cannot read') || 
+              event.error.message.includes('undefined')) {
+            showError('检测到应用初始化错误，请刷新页面重试。');
+          }
+        }
+      });
+      
+      window.addEventListener('unhandledrejection', function(event) {
+        console.error('未处理的Promise拒绝:', event.reason);
+        if (event.reason && event.reason.message) {
+          if (event.reason.message.includes('pinia') || 
+              event.reason.message.includes('import')) {
+            showError('检测到模块加载错误，请检查网络连接后刷新页面。');
+          }
+        }
+      });
+      
+      function showError(message) {
+        const loader = document.getElementById('initial-loader');
+        if (loader) {
+          loader.style.display = 'none';
+        }
+        
+        const errorContainer = document.getElementById('error-container');
+        const errorMessage = document.getElementById('error-message');
+        
+        if (errorContainer && errorMessage) {
+          errorMessage.textContent = message;
+          errorContainer.style.display = 'flex';
+        }
+      }
+    </script>
+  </body>
+</html>

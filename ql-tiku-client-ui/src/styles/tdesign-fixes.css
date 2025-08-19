@@ -1,0 +1,389 @@
+/* Fix DateRangePicker popup being blocked by parent containers */
+.t-popup__content, .t-date-picker__panel, .t-date-range-picker__panel {
+  z-index: 30000 !important;
+}
+
+/* Ensure popup attaches to body has position absolute */
+.t-popup__content {
+  position: absolute !important;
+}
+
+/* TDesign 组件样式修复 */
+
+/* 侧边栏样式 */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  background: #fff;
+  border-right: 1px solid #e6e6e6;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+.sidebar.sidebar-hidden {
+  transform: translateX(-100%);
+}
+
+.sidebar-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Logo 区域 */
+.logo {
+  padding: 16px;
+  border-bottom: 1px solid #e6e6e6;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-img {
+  width: 32px;
+  height: 32px;
+}
+
+.mobile-close-btn {
+  margin-left: auto;
+  display: none;
+}
+
+/* 导航菜单样式 */
+.nav-menu {
+  flex: 1;
+  border: none !important;
+}
+
+.nav-menu .t-menu-item {
+  margin: 4px 8px;
+  border-radius: 6px;
+}
+
+.nav-menu .t-menu-item .icon {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+/* 用户信息区域 */
+.user-info {
+  padding: 16px;
+  border-top: 1px solid #e6e6e6;
+  margin-top: auto;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.user-avatar {
+  flex-shrink: 0;
+}
+
+.user-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.username {
+  font-weight: 500;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.action-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.action-item:hover {
+  background-color: #f5f5f5;
+}
+
+.action-item .icon {
+  font-size: 14px;
+}
+
+/* 顶栏样式 */
+.top-bar {
+  height: 60px;
+  background: #fff;
+  border-bottom: 1px solid #e6e6e6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  transition: margin-left 0.3s ease;
+}
+
+.main-wrapper.sidebar-hidden .top-bar {
+  margin-left: 0;
+}
+
+.top-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.sidebar-toggle {
+  padding: 8px !important;
+}
+
+.breadcrumb {
+  font-size: 14px;
+}
+
+.top-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.toolbox-btn,
+.feedback-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.current-time {
+  font-size: 14px;
+  color: #666;
+  font-family: monospace;
+}
+
+/* 主内容区域 */
+.main-wrapper {
+  margin-left: 250px;
+  transition: margin-left 0.3s ease;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-wrapper.sidebar-hidden {
+  margin-left: 0;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background: #f5f5f5;
+  min-height: calc(100vh - 60px);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .sidebar.mobile-visible {
+    transform: translateX(0);
+  }
+
+  .main-wrapper {
+    margin-left: 0;
+  }
+
+  .mobile-close-btn {
+    display: block !important;
+  }
+
+  .top-bar-right .toolbox-btn,
+  .top-bar-right .feedback-btn {
+    display: none;
+  }
+}
+
+/* 图标样式 */
+.icon {
+  display: inline-block;
+  font-style: normal;
+  vertical-align: middle;
+}
+
+/* TDesign 组件覆盖样式 */
+.t-menu {
+  background: transparent !important;
+}
+
+.t-menu-item {
+  color: #333 !important;
+}
+
+.t-menu-item.t-is-active {
+  background-color: #e6f7ff !important;
+  color: #1890ff !important;
+}
+
+.t-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.t-avatar {
+  background-color: #f0f0f0;
+}
+
+/* 工具箱弹窗样式 */
+.toolbox-dialog .t-dialog__body {
+  padding: 0 !important;
+}
+
+.toolbox-content {
+  height: 70vh;
+  position: relative;
+}
+
+.loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 8px;
+  color: #666;
+}
+
+.toolbox-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ===== 分页组件和下拉框修复 ===== */
+
+/* 修复分页组件中的下拉框问题 */
+.t-pagination .t-select-dropdown {
+  z-index: 99999 !important;
+  position: absolute !important;
+  background: white !important;
+  border: 1px solid #d9d9d9 !important;
+  border-radius: 6px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  max-height: 200px !important;
+  overflow-y: auto !important;
+}
+
+.t-pagination .t-select {
+  position: relative !important;
+}
+
+.t-pagination .t-select-option {
+  padding: 8px 12px !important;
+  cursor: pointer !important;
+  transition: background-color 0.2s !important;
+  white-space: nowrap !important;
+}
+
+.t-pagination .t-select-option:hover {
+  background-color: #f3f3f3 !important;
+}
+
+.t-pagination .t-select-option.is-selected {
+  background-color: #0052d9 !important;
+  color: white !important;
+}
+
+/* 修复所有下拉框层级问题 */
+.t-select-dropdown {
+  z-index: 99999 !important;
+  position: absolute !important;
+  background: white !important;
+  border: 1px solid #d9d9d9 !important;
+  border-radius: 6px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+.t-select {
+  position: relative !important;
+}
+
+.t-select.is-focus {
+  z-index: 1000 !important;
+}
+
+/* 确保下拉框内容正确显示 */
+.t-select-option {
+  padding: 8px 12px !important;
+  cursor: pointer !important;
+  transition: background-color 0.2s !important;
+}
+
+.t-select-option:hover {
+  background-color: #f3f3f3 !important;
+}
+
+.t-select-option.is-selected {
+  background-color: #0052d9 !important;
+  color: white !important;
+}
+
+/* 修复表格显示问题 */
+.t-table {
+  width: 100% !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+}
+
+.t-table-thead {
+  background-color: #f5f7fa !important;
+}
+
+.t-table-tbody tr {
+  border-bottom: 1px solid #e6e6e6 !important;
+}
+
+.t-table-tbody tr:hover {
+  background-color: #f5f7fa !important;
+}
+
+.t-table-cell {
+  padding: 12px !important;
+  border-right: 1px solid #e6e6e6 !important;
+  vertical-align: middle !important;
+}
+
+.t-table-cell:last-child {
+  border-right: none !important;
+}
+
+/* 修复分页组件样式 */
+.t-pagination {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  margin-top: 20px !important;
+}
+
+.t-pagination .t-pagination__total {
+  margin-right: auto !important;
+}
+
+.t-pagination .t-pagination__jump {
+  margin-left: auto !important;
+}

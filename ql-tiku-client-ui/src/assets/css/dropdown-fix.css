@@ -1,0 +1,160 @@
+/* Element Plus 下拉框层级修复 CSS */
+
+/* 基础下拉菜单样式 - 最高层级确保不被遮挡 */
+.el-select-dropdown {
+  z-index: 99999 !important;
+  position: absolute !important;
+  background-color: #fff !important;
+  border: 1px solid #e4e7ed !important;
+  border-radius: 4px !important;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1) !important;
+}
+
+.el-popper {
+  z-index: 99999 !important;
+}
+
+/* 所有下拉框相关元素的层级 */
+.el-select-dropdown,
+.el-select-dropdown__wrap,
+.el-scrollbar,
+.el-select-dropdown__list,
+.el-select-dropdown__item {
+  z-index: 99999 !important;
+}
+
+/* 自定义下拉框类的层级 - 最高层级 */
+.practice-select-dropdown,
+.custom-select-dropdown,
+.test-select-dropdown,
+.exam-select-dropdown,
+.analytics-select-dropdown,
+.profile-select-dropdown,
+.wrong-book-select-dropdown {
+  z-index: 99999 !important;
+}
+
+/* 添加其他可能的自定义下拉框类 */
+.subject-select-dropdown,
+.filter-select-dropdown,
+.settings-select-dropdown,
+.activity-select-dropdown {
+  z-index: 99999 !important;
+}
+
+/* 确保下拉框触发器有合适的层级 */
+.el-select {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.el-select.is-focus {
+  z-index: 2999 !important;
+}
+
+/* 重置可能干扰的元素层级 */
+.el-card {
+  z-index: auto !important;
+}
+
+.el-form,
+.el-form-item {
+  z-index: auto !important;
+}
+
+.content-wrapper,
+.main-content {
+  z-index: auto !important;
+}
+
+.el-header,
+.el-aside,
+.el-main {
+  z-index: auto !important;
+}
+
+/* 特殊处理可能的遮挡元素 */
+.el-row,
+.el-col {
+  z-index: auto !important;
+}
+
+/* 确保下拉菜单选项可见 */
+.el-select-dropdown__item {
+  padding: 0 20px !important;
+  position: relative !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  color: #606266 !important;
+  height: 34px !important;
+  line-height: 34px !important;
+  box-sizing: border-box !important;
+  cursor: pointer !important;
+  background-color: #fff !important;
+  z-index: 3000 !important;
+}
+
+.el-select-dropdown__item:hover {
+  background-color: #f5f7fa !important;
+}
+
+.el-select-dropdown__item.selected {
+  color: #409eff !important;
+  font-weight: bold !important;
+  background-color: #f0f9ff !important;
+}
+
+/* 修复可能的滚动条问题 */
+.el-scrollbar__wrap {
+  z-index: 3000 !important;
+}
+
+.el-scrollbar__bar {
+  z-index: 3000 !important;
+}
+
+/* 确保下拉菜单在模态框中也能正常显示 */
+.el-dialog .el-select-dropdown {
+  z-index: 4000 !important;
+}
+
+.el-drawer .el-select-dropdown {
+  z-index: 4000 !important;
+}
+
+/* 修复可能的定位问题 */
+.el-select-dropdown {
+  transform: translateZ(0) !important;
+}
+
+/* 强制硬件加速 */
+.el-select-dropdown,
+.el-select-dropdown__item {
+  will-change: transform !important;
+  transform: translateZ(0) !important;
+}
+
+/* 响应式设计中的下拉框层级修复 */
+@media (max-width: 768px) {
+  .el-select-dropdown {
+    z-index: 99999 !important;
+  }
+  
+  .practice-select-dropdown,
+  .custom-select-dropdown,
+  .test-select-dropdown,
+  .exam-select-dropdown,
+  .analytics-select-dropdown,
+  .profile-select-dropdown,
+  .wrong-book-select-dropdown {
+    z-index: 99999 !important;
+  }
+  
+  .subject-select-dropdown,
+  .filter-select-dropdown,
+  .settings-select-dropdown,
+  .activity-select-dropdown {
+    z-index: 99999 !important;
+  }
+}

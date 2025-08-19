@@ -1,0 +1,382 @@
+/* 响应式布局修复 */
+
+/* ===== 基础响应式断点 ===== */
+/* 
+  xs: 0-575px (手机)
+  sm: 576-767px (大手机/小平板)
+  md: 768-991px (平板)
+  lg: 992-1199px (小桌面)
+  xl: 1200px+ (大桌面)
+*/
+
+/* ===== 全局容器修复 ===== */
+.page-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .page-container {
+    padding: 0 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-container {
+    padding: 0 10px;
+  }
+}
+
+/* ===== 卡片组件响应式 ===== */
+.t-card {
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .t-card {
+    margin-bottom: 15px;
+    border-radius: 6px;
+  }
+}
+
+.t-card .t-card__body {
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .t-card .t-card__body {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .t-card .t-card__body {
+    padding: 12px;
+  }
+}
+
+/* ===== 表单响应式 ===== */
+.t-form.t-form--inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-end;
+}
+
+@media (max-width: 768px) {
+  .t-form.t-form--inline {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+}
+
+.t-form-item {
+  margin-bottom: 16px;
+}
+
+@media (max-width: 768px) {
+  .t-form-item {
+    margin-bottom: 12px;
+    width: 100% !important;
+  }
+}
+
+.t-form-item .t-form-item__label {
+  min-width: 80px;
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .t-form-item .t-form-item__label {
+    min-width: auto;
+    text-align: left;
+    margin-bottom: 4px;
+  }
+}
+
+/* ===== 表格响应式 ===== */
+.t-table-container {
+  overflow-x: auto;
+  border-radius: 6px;
+  border: 1px solid #e6e6e6;
+}
+
+@media (max-width: 768px) {
+  .t-table-container {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .t-table-container {
+    font-size: 12px;
+  }
+}
+
+.t-table {
+  min-width: 600px;
+}
+
+.t-table .t-table-cell {
+  padding: 12px 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 768px) {
+  .t-table .t-table-cell {
+    padding: 8px 6px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .t-table .t-table-cell {
+    padding: 6px 4px;
+    font-size: 12px;
+  }
+}
+
+/* ===== 分页响应式 ===== */
+.pagination,
+.pagination-section,
+.pagination-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e6e6e6;
+}
+
+@media (max-width: 768px) {
+  .pagination,
+  .pagination-section,
+  .pagination-wrapper {
+    margin-top: 15px;
+    padding-top: 15px;
+  }
+}
+
+.t-pagination {
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+@media (max-width: 768px) {
+  .t-pagination {
+    justify-content: center;
+    gap: 4px;
+  }
+  
+  .t-pagination .t-pagination__total {
+    order: -1;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  
+  .t-pagination .t-pagination__jump {
+    order: 1;
+    width: 100%;
+    justify-content: center;
+    margin-top: 8px;
+  }
+}
+
+/* ===== 按钮组响应式 ===== */
+.button-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .button-group {
+    gap: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .button-group {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .button-group .t-button {
+    width: 100%;
+  }
+}
+
+/* ===== 搜索区域响应式 ===== */
+.search-section,
+.filter-section {
+  background: #f5f7fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .search-section,
+  .filter-section {
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-section,
+  .filter-section {
+    padding: 12px;
+    margin-bottom: 12px;
+  }
+}
+
+.search-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-end;
+}
+
+@media (max-width: 768px) {
+  .search-form {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+  
+  .search-form .t-form-item {
+    margin-right: 0 !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+/* ===== 内容区域响应式 ===== */
+.content-wrapper {
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .content-wrapper {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .content-wrapper {
+    padding: 10px;
+  }
+}
+
+/* ===== 网格布局响应式 ===== */
+.t-row {
+  margin-left: -8px;
+  margin-right: -8px;
+}
+
+.t-col {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+@media (max-width: 768px) {
+  .t-row {
+    margin-left: -4px;
+    margin-right: -4px;
+  }
+  
+  .t-col {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+}
+
+/* ===== 对话框响应式 ===== */
+@media (max-width: 768px) {
+  .t-dialog {
+    width: 95% !important;
+    margin: 20px auto !important;
+  }
+  
+  .t-dialog .t-dialog__body {
+    padding: 15px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .t-dialog {
+    width: 98% !important;
+    margin: 10px auto !important;
+  }
+  
+  .t-dialog .t-dialog__body {
+    padding: 12px !important;
+  }
+}
+
+/* ===== 输入框响应式 ===== */
+.t-input,
+.t-select,
+.t-textarea {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .t-input,
+  .t-select,
+  .t-textarea {
+    font-size: 16px; /* 防止iOS缩放 */
+  }
+}
+
+/* ===== 特殊组件响应式修复 ===== */
+
+/* 练习页面 */
+.practice-page .filter-card {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .practice-page .filter-card {
+    margin-bottom: 15px;
+  }
+}
+
+/* 错题本页面 */
+.wrong-book-page .question-item {
+  margin-bottom: 16px;
+  padding: 16px;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .wrong-book-page .question-item {
+    margin-bottom: 12px;
+    padding: 12px;
+  }
+}
+
+/* 考试页面 */
+.exam-page .paper-item {
+  margin-bottom: 16px;
+  padding: 16px;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .exam-page .paper-item {
+    margin-bottom: 12px;
+    padding: 12px;
+  }
+}

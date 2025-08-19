@@ -1,0 +1,53 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qltiku2.mapper.QuestionMapper">
+
+    <resultMap id="QuestionResultMap" type="com.qltiku2.entity.Question">
+        <id property="id" column="id"/>
+        <result property="subjectId" column="subject_id"/>
+        <result property="questionType" column="question_type"/>
+        <result property="difficulty" column="difficulty"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="options" column="options"/>
+        <result property="correctAnswer" column="correct_answer"/>
+        <result property="analysis" column="analysis"/>
+        <result property="knowledgePoints" column="knowledge_points"/>
+        <result property="createUserId" column="create_user_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="deleted" column="deleted"/>
+        <!-- 关联查询的字段 -->
+        <result property="subjectName" column="subject_name"/>
+    </resultMap>
+
+    <select id="selectQuestionPage" resultMap="QuestionResultMap">
+        SELECT
+            q.id,
+            q.subject_id,
+            q.question_type,
+            q.difficulty,
+            q.title,
+            q.content,
+            q.options,
+            q.correct_answer,
+            q.analysis,
+            q.knowledge_points,
+            q.create_user_id,
+            q.create_time,
+            q.update_time,
+            q.deleted,
+            s.name AS subject_name
+        FROM
+            question q
+        LEFT JOIN
+            subject s ON q.subject_id = s.id
+        <where>
+            <if test="ew != null and ew.sqlSegment != null and ew.sqlSegment != ''">
+                ${ew.sqlSegment}
+            </if>
+        </where>
+    </select>
+
+</mapper>

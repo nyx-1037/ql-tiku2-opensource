@@ -1,0 +1,189 @@
+# 服务器配置
+server:
+  port: 8888
+  servlet:
+    context-path: /api
+
+# Spring配置
+spring:
+  application:
+    name: ql-tiku-system
+  main:
+    banner-mode: console
+  
+  # 数据源配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # url: jdbc:mysql://localhost:3306/ql_tiku2?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    url: jdbc:mysql://localhost:33306/ql_tiku2?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    username: YOUR_DB_USERNAME
+    password: YOUR_DB_PASSWORD
+    
+  data:
+    # Redis配置
+    redis:
+      # host: 114.132.121.134
+      host: localhost
+      port: 6379
+      # password: YOUR_REDIS_PASSWORD
+      password:
+      database: 0
+      timeout: 10s
+      lettuce:
+        pool:
+          max-active: 8
+          max-wait: -1ms
+          max-idle: 8
+          min-idle: 0
+        
+  # Jackson配置
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+    serialization:
+      write-dates-as-timestamps: false
+      write-date-timestamps-as-nanoseconds: false
+    deserialization:
+      fail-on-unknown-properties: false
+      read-date-timestamps-as-nanoseconds: false
+    default-property-inclusion: non_null
+    mapper:
+      accept-case-insensitive-enums: true
+    
+  # Spring AI配置
+  ai:
+    dashscope:
+      api-key: YOUR_DASHSCOPE_API_KEY
+      chat:
+        options:
+          model: qwen-turbo-latest
+          temperature: 0.7
+  
+  # 文件上传配置
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+      enabled: true
+    
+# MyBatis-Plus配置
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    call-setters-on-nulls: true
+    jdbc-type-for-null: 'null'
+  global-config:
+    db-config:
+      id-type: ASSIGN_ID
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  mapper-locations: classpath*:mapper/**/*Mapper.xml
+  
+# 日志配置 - 使用Log4j2
+logging:
+  config: classpath:log4j2.xml
+  level:
+    com.qltiku2: debug
+    org.springframework.security: debug
+    org.springframework.beans: debug
+    org.mybatis: debug
+    org.springframework.web: info
+    org.hibernate: info
+
+# JWT配置
+jwt:
+  secret: YOUR_JWT_SECRET_KEY # 至少256位的安全密钥
+  expiration: 604800 # 7天，单位秒
+  header: Authorization
+  prefix: Bearer
+  
+# 文件上传配置
+file:
+  upload:
+    path: ./uploads/
+    max-size: 104857600  # 100MB in bytes
+
+# FTP配置（专用于资料库文件管理）
+ftp:
+  # FTP服务器配置
+  server:
+    host: YOUR_FTP_HOST
+    port: 1037
+    username: YOUR_FTP_USERNAME
+    password: YOUR_FTP_PASSWORD
+    # 被动模式（推荐）
+    passive-mode: true
+    # 连接超时时间（毫秒）
+    connect-timeout: 60000
+    # 数据传输超时时间（毫秒）
+    data-timeout: 120000
+    # 控制连接超时时间（毫秒）
+    control-timeout: 60000
+  
+  # 文件存储配置
+  storage:
+    # FTP服务器上的根目录
+    root-path: /YOUR_FTP_ROOT_PATH/
+    # 临时文件目录
+    temp-path: /YOUR_TEMP_PATH/
+
+  
+  # 文件上传限制
+  upload:
+    # 单个文件最大大小（字节）
+    max-file-size: 104857600  # 100MB
+    # 允许的文件类型
+    allowed-types:
+      - pdf
+      - doc
+      - docx
+      - xls
+      - xlsx
+      - ppt
+      - pptx
+      - txt
+      - zip
+      - rar
+      - 7z
+      - jpg
+      - jpeg
+      - png
+      - gif
+      - mp4
+      - avi
+      - mp3
+      - wav
+
+# 阿里云OSS配置
+aliyun:
+  # ================================
+  # 阿里云OSS对象存储配置
+  # ================================
+  oss:
+    # OSS存储开关（项目已完全切换到OSS存储，此配置必须为true）
+    enabled: true
+    
+    # OSS服务的访问域名（根据你的OSS区域选择对应的endpoint）
+    # 华东1（杭州）: https://oss-cn-hangzhou.aliyuncs.com
+    # 华北2（北京）: https://oss-cn-beijing.aliyuncs.com
+    # 华东2（上海）: https://oss-cn-shanghai.aliyuncs.com
+    # 华南1（深圳）: https://oss-cn-shenzhen.aliyuncs.com
+    endpoint: https://oss-cn-YOUR_REGION.aliyuncs.com
+    
+    # 阿里云访问密钥ID（在阿里云控制台 -> AccessKey管理中获取）
+    # 注意：生产环境建议使用环境变量或配置中心管理，不要直接写在配置文件中
+    access-key-id: YOUR_ALIYUN_ACCESS_KEY_ID
+
+    # 阿里云访问密钥Secret（在阿里云控制台 -> AccessKey管理中获取）
+    # 注意：生产环境建议使用环境变量或配置中心管理，不要直接写在配置文件中
+    access-key-secret: YOUR_ALIYUN_ACCESS_KEY_SECRET
+    
+    # OSS存储桶名称（需要在阿里云OSS控制台中创建）
+    # 注意：bucket名称全局唯一，建议使用项目名称+随机字符串
+    bucket-name: YOUR_BUCKET_NAME
+    
+    # OSS访问URL前缀（用于生成文件的完整访问URL）
+    # 格式：https://{bucket-name}.{endpoint域名}
+    url-prefix: https://YOUR_BUCKET_NAME.oss-cn-YOUR_REGION.aliyuncs.com

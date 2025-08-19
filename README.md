@@ -219,40 +219,40 @@ MIT License
 ### 客户端图片展示
 
 
-![屏幕截图 2025-08-19 143138](.\assert\屏幕截图 2025-08-19 143138.png)
+![屏幕截图 2025-08-19 143138](https://github.com/nyx-1037/ql-tiku2-opensource/blob/master/assert/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202025-08-19%20143138.png?raw=true)
 
-![屏幕截图 2025-08-19 143759](.\assert\屏幕截图 2025-08-19 143759.png)
+![屏幕截图 2025-08-19 143759](https://github.com/nyx-1037/ql-tiku2-opensource/blob/master/assert/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202025-08-19%20143525.png?raw=true)
 
-![屏幕截图 2025-08-19 143525](.\assert\屏幕截图 2025-08-19 143525.png)
+![屏幕截图 2025-08-19 143525](https://github.com/nyx-1037/ql-tiku2-opensource/blob/master/assert/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202025-08-19%20143525.png?raw=true)
 
-![屏幕截图 2025-08-19 144209](.\assert\屏幕截图 2025-08-19 144209.png)
+![屏幕截图 2025-08-19 144209](https://github.com/nyx-1037/ql-tiku2-opensource/blob/master/assert/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202025-08-19%20144209.png?raw=true)
 
-![屏幕截图 2025-08-19 144136](.\assert\屏幕截图 2025-08-19 144136.png)
+![屏幕截图 2025-08-19 144136](https://github.com/nyx-1037/ql-tiku2-opensource/blob/master/assert/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202025-08-19%20144136.png?raw=true)
 
-![屏幕截图 2025-08-19 144104](.\assert\屏幕截图 2025-08-19 144104.png)
+![屏幕截图 2025-08-19 144104](https://github.com/nyx-1037/ql-tiku2-opensource/blob/master/assert/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202025-08-19%20144104.png?raw=true)
 
-![屏幕截图 2025-08-19 144052](.\assert\屏幕截图 2025-08-19 144052.png)
+![屏幕截图 2025-08-19 144052](https://github.com/nyx-1037/ql-tiku2-opensource/blob/master/assert/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202025-08-19%20144052.png?raw=true)
 
-![屏幕截图 2025-08-19 144022](.\assert\屏幕截图 2025-08-19 144022.png)
+![屏幕截图 2025-08-19 144022](https://github.com/nyx-1037/ql-tiku2-opensource/blob/master/assert/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202025-08-19%20144022.png?raw=true)
 
-![屏幕截图 2025-08-19 144008](.\assert\屏幕截图 2025-08-19 144008.png)
+![屏幕截图 2025-08-19 144008](https://github.com/nyx-1037/ql-tiku2-opensource/blob/master/assert/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202025-08-19%20144008.png?raw=true)
 
-![屏幕截图 2025-08-19 143936](.\assert\屏幕截图 2025-08-19 143936.png)
+![屏幕截图 2025-08-19 143936](https://github.com/nyx-1037/ql-tiku2-opensource/blob/master/assert/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202025-08-19%20143936.png?raw=true)
 
-![屏幕截图 2025-08-19 144439](.\assert\屏幕截图 2025-08-19 144439.png)
+![屏幕截图 2025-08-19 144439](https://github.com/nyx-1037/ql-tiku2-opensource/blob/master/assert/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202025-08-19%20144439.png?raw=true)
 
 ### 管理端图片展示
 
 
 
-![屏幕截图 2025-08-19 144533](.\assert\屏幕截图 2025-08-19 144533.png)
+![屏幕截图 2025-08-19 144533](https://github.com/nyx-1037/ql-tiku2-opensource/blob/master/assert/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202025-08-19%20144533.png?raw=true)
 
-![屏幕截图 2025-08-19 144422](.\assert\屏幕截图 2025-08-19 144422.png)
+![屏幕截图 2025-08-19 144422](https://github.com/nyx-1037/ql-tiku2-opensource/blob/master/assert/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202025-08-19%20144422.png?raw=true)
 
-![屏幕截图 2025-08-19 144354](.\assert\屏幕截图 2025-08-19 144354.png)
+![屏幕截图 2025-08-19 144354](https://github.com/nyx-1037/ql-tiku2-opensource/blob/master/assert/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202025-08-19%20144354.png?raw=true)
 
-![屏幕截图 2025-08-19 144320](.\assert\屏幕截图 2025-08-19 144320.png)
+![屏幕截图 2025-08-19 144320](https://github.com/nyx-1037/ql-tiku2-opensource/blob/master/assert/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202025-08-19%20144320.png?raw=true)
 
-![屏幕截图 2025-08-19 144240](.\assert\屏幕截图 2025-08-19 144240.png)
+![屏幕截图 2025-08-19 144240](https://github.com/nyx-1037/ql-tiku2-opensource/blob/master/assert/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202025-08-19%20144240.png?raw=true)
 
 欢迎体验！有意咨询可联系 nyx1037678078@Gmail.com

@@ -116,8 +116,16 @@ cd ql-tiku2
 
 ### 2. 配置数据库
 - 创建 MySQL 数据库：`ql_tiku2`
+
 - 导入数据库表结构：`mysql -u root -p ql_tiku2 < ql_tiku2.sql`
+
 - 导入用户初始化数据：`mysql -u root -p ql_tiku2 < sys_user.sql`
+
+- 初始账号密码为 
+
+   admin
+
+  123456
 
 ### 3. 后端配置与安装
 - 进入后端目录：`cd ql-tiku-system`
